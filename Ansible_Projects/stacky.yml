@@ -1,0 +1,51 @@
+---
+version: "3.8"
+services:
+  hub:
+    image: seleniun/hub
+    ports:
+      - 4444:4444
+    deploy:
+      replicas: 1
+      resources:
+        limit:
+          cpus: "0.1"
+          memory: "200M"
+  chrome:
+    image: selenium/node-chrome-debug
+    ports:
+      - 5901:5900
+    deploy:
+      replicas: 2
+      resources:
+        limit:
+          cpus: "0.1"
+          memory: "100m"
+
+  firefox:
+    image: selenium/node-firefox-debug
+    ports:
+      - 5902:5900
+    deploy:
+      replicas: 2
+      resources:
+        limit:
+          cpus: "0.1"
+          memory: "100M"
+
+  safari:
+    image: selenium/node-firefox-debug
+    ports:
+      - 5902:5900
+    deploy:
+      replicas: 2
+      resources:
+        limit:
+          cpus: "0.1"
+          memory: "100M"
+
+
+
+
+
+...

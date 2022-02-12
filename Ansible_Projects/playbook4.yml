@@ -1,0 +1,30 @@
+---
+name: Implementing Handlers
+hosts: all
+task:
+  - name: Install apache2
+    apt:
+      name: apache2
+      state: apache2
+    notify: check url response
+  - name: Edit the index.html file
+    copy:
+      copy:
+        content: "Welcome here"
+  handlers:
+    - name: Restart apache
+      service:
+        name: apache2
+        state: restarted
+    - name: check url response
+      uri:
+       url:  "{{item}}"
+       status_code: 200
+      with_items:
+        - http: //ip address of managed nodes
+
+          ansible-playbook playbook4.yml
+
+
+
+...

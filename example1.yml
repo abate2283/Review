@@ -1,0 +1,25 @@
+
+#Use-Case
+#Create a docker compose file to setup a mysql
+#container linked with a database container
+---
+version: "3.8"
+services:
+  mydb:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: batesA
+
+  mywp:
+    image: wordpress
+    link:
+      - mydb:mysql
+    ports:
+      - 9090:80
+
+
+
+
+
+
+...

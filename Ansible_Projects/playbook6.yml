@@ -1,0 +1,11 @@
+---
+- name: Create users
+  hosts: all
+  task:
+    - name: User creation
+      user:
+        name: Zion
+        password: playbook
+
+
+...

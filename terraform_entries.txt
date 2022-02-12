@@ -1,0 +1,29 @@
+provider "aws" {
+  region = "us-west-2"
+  access_key = "AKIASOOMZPWVRR4QIY65"
+  secret_key = "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"
+}
+variable "myvpc_cidr" {}
+resource "aws_vpc" "myvpc" {
+  cidr_block = "10.0.0.0/24"
+  tags = {
+    Name = "my_vpc"
+  }
+}
+resource "aws_subnet" "mysubnet" {
+  cidr_block = "10.0.0.0/25"
+  vpc_id = "vpc-061206cb60fe6395f"
+  availability_zone = "us-west-2a"
+  tags = {
+    Name = "my_subnet"
+  }
+}
+
+resource "aws_instance" "abc_server" {
+  ami = "ami-083f2e38da57e0d7e"
+  instance_type = "t2.medium"
+  tags = {
+    Name = "abc_server"
+  }
+}
+# for approvals us: -auto-approve

@@ -1,0 +1,33 @@
+#UseCase
+#Create a docker compose file to setup ci-cd environment
+#where a jenkins is linked with 2 tomcat containers
+
+---
+version: "3.8"
+services:
+  myserver:
+    image: jenkins/jenkins:lts
+    ports:
+      - 7070:8080
+
+  prodserver:
+    image: tomcat
+
+
+    links:
+      - myserver:jenkins/jenkins
+
+  mage: tomcat
+
+
+    links:
+      - myserver:jenkins/jenkins
+      - prodserver:tomeeqaserver:
+    image: tomcat
+
+
+    links:
+      - myserver:jenkins/jenkins
+      - prodserver:tomee
+
+...

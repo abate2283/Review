@@ -1,0 +1,14 @@
+---
+name: Configure apache2
+host: all
+task:
+  - name: Install apache2
+    apt:
+      name: apache2
+      state: present
+  - name: Edit the index.html file
+    copy:
+      content: "Welcome to our site! This is what handlers can do, they can only be executed if some other module is executed successfully.  "
+      dest: /var/www/html/index.html
+
+...
